@@ -29,6 +29,75 @@ console.log(asn1.decode(buffer));
 
 ```
 
+### API
+
+```javascript
+
+asn1.decode(buffer, options);
+
+// defaults
+options = {
+	simplify: true, // simply the output
+	checkLength: true, // throw error if not the whole buffer can be decoded
+	deep: true, // try to decode binary ASN.1 types as ASN.1
+	quiet: true // if false console.log if no decoder for the type is avaliable
+}
+
+```
+
+#### simplify
+
+```javascript
+
+var tag = asn1.decode(buffer, {simplify: false});
+console.log(tag);
+
+/*
+{ start: 0,
+  class: 0,
+  constructed: true,
+  type: 16,
+  name: 'Sequence',
+  length: 513,
+  Sequence: 
+   [ { start: 4,
+       class: 0,
+       constructed: true,
+       type: 16,
+       name: 'Sequence',
+       length: 362,
+       Sequence: [Object] },
+     { start: 370,
+       class: 0,
+       constructed: true,
+       type: 16,
+       name: 'Sequence',
+       length: 13,
+       Sequence: [Object] },
+.....
+*/
+
+var stag = asn1.simplify(tag);
+// stag is equal to asn1.decode(buffer, {simplify: true});
+
+/*
+[ [ <Buffer 00 b2 99 52 e7 91 47 24 8f>,
+    [ '1.2.840.113549.1.1.11', null ],
+    { '2.5.4.6': 'AU',
+      '2.5.4.8': 'Some-State',
+      '2.5.4.10': 'Internet Widgits Pty Ltd' },
+    [ Tue Feb 03 2015 12:20:48 GMT+0100 (CET),
+      Wed Feb 03 2016 12:20:48 GMT+0100 (CET) ],
+    { '2.5.4.6': 'AU',
+      '2.5.4.8': 'Some-State',
+      '2.5.4.10': 'Internet Widgits Pty Ltd' },
+    [ [Object], [Object] ] ],
+  [ '1.2.840.113549.1.1.11', null ],
+  <Buffer 00 72 b5 07 ef 56 fc 00 06 3e 24 c1 6c d9 66 f8 cc 14 24 d6 30 54 18 00 32 84 19 ef b9 8b 87 20 8f 72 c7 18 b8 9d 8a fc 3d 88 0d 27 d2 11 6f a5 b9 3b 66 ...> ]
+*/
+
+```
+
 
 #### LICENSE
 
