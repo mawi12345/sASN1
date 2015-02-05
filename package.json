@@ -1,0 +1,28 @@
+{
+  "name": "sasn1",
+  "version": "0.1.1",
+  "description": "ASN1 decoder",
+  "main": "asn1.js",
+  "scripts": {
+    "test": "nodeunit test/test-*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mawi12345/sASN1.git"
+  },
+  "keywords": [
+    "ASN1",
+    "ASN.1",
+    "DER",
+    "BER"
+  ],
+  "author": "Martin Wind",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mawi12345/sASN1/issues"
+  },
+  "homepage": "https://github.com/mawi12345/sASN1",
+  "dependencies": {
+    "moment": "^2.9.0"
+  }
+}
